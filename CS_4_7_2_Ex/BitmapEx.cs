@@ -44,5 +44,35 @@ namespace CS_4_7_2_Ex
                 }
             }
         }
+
+        public void makePng2()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"TAPSONIC_TOP_");
+            sb.Append(DateTime.Now.ToString("yyyyMMddHHmmss"));
+            sb.Append(@".png");
+            Console.WriteLine(sb.ToString());
+
+            // 1. Create a bitmap
+            using (Bitmap bitmap = new Bitmap(80, 20, PixelFormat.Format32bppArgb))
+            {
+
+                int x, y;
+
+                for (x = 0; x < bitmap.Width; x++)
+                {
+                    for (y = 0; y < bitmap.Height; y++)
+                    {
+                        //Color pixelColor = bitmap.GetPixel(x, y);
+                        //Color newColor = Color.FromArgb(pixelColor.R, 0, 0);
+                        //bitmap.SetPixel(x, y, newColor);
+                        bitmap.SetPixel(x, y, Color.FromArgb(255, 255, 0));
+                    }
+                }
+
+                bitmap.Save(sb.ToString(), ImageFormat.Png);
+            }
+
+        }
     }
 }
